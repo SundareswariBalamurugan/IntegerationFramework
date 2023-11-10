@@ -1,5 +1,6 @@
 Feature:Accessing Pet details and ordering items
 
+  @ApiCheck
  Scenario:
    Given Added a new pet to the store
    And new POST response should be validated against the input

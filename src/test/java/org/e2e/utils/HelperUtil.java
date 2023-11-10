@@ -2,7 +2,8 @@ package org.e2e.utils;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Assert;
+
+import org.junit.jupiter.api.AfterAll;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -14,17 +15,19 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
-import java.time.Clock;
+
+
 import java.time.Duration;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 
 @Slf4j
 public class HelperUtil{
@@ -77,7 +80,7 @@ public class HelperUtil{
 
     public void assertEquals(int actual, int expected) {
 
-        Assert.assertEquals("Two texts are not equal!", actual, expected);
+     Assert.assertEquals(actual, expected);
 
     }
 
@@ -85,7 +88,7 @@ public class HelperUtil{
         if(!text1.equals(text2)){
             System.out.println("Texts are not equal");
         }else{
-            Assert.fail("Search isn't filtering the results");
+            Assert.assertFalse(text1.equals(text2),"Search isn't filtering the results");
         }
     }
 
@@ -339,7 +342,10 @@ public class HelperUtil{
     }
 
 
-
+    @AfterAll
+    public void tearDown(){
+        driver.quit();
+    }
 
 
 

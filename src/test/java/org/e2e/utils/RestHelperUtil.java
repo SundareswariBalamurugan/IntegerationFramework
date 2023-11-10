@@ -8,7 +8,8 @@ import java.time.LocalDate;
 import java.util.Base64;
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertTrue;
+
 
 @Slf4j
 public class RestHelperUtil extends Restutil {

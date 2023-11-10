@@ -7,11 +7,8 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.http.HttpStatus;
 import org.e2e.contexts.TestContext;
-import org.e2e.dataproviders.CustomObjectMapper;
-import org.e2e.domains.DogDetails;
-import org.junit.Assert;
+import org.testng.Assert;
 
-import java.util.Map;
 
 import static io.restassured.http.ContentType.JSON;
 

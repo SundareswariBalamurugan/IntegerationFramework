@@ -6,3 +6,7 @@ Feature: Sample Homepage Automation
 @homepage
 Scenario: Validate whether User can access Runa products
   And title should be "Runa | Embed Seamless Payouts, Rewards & Incentives"
+
+
+
+

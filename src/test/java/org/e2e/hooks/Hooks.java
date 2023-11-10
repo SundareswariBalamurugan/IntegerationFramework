@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.e2e.dataproviders.ConfigFileReader;
 import org.e2e.utils.WebDriverUtil;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
@@ -33,7 +34,7 @@ public class Hooks  {
                 .getMethodName());
     }
 
-    //@BeforeClass(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     static void setupClass() {
         driver=  WebDriverUtil.getDriver();
     }
@@ -49,9 +50,8 @@ public class Hooks  {
     /**
      * Finish and close the test runner.
      */
-    @AfterClass(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void tearDownClass() {
-        driver.quit();
         if (testNGCucumberRunner == null) {
             return;
         }

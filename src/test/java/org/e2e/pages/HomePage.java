@@ -44,11 +44,7 @@ public class HomePage extends BasePage {
 
       public void selectRunaSendFromSubmenu(){
           List<WebElement> valuesInSubmenuList = helperUtil.selectElementFromList(subMenuList);
-          for(int i=0;i<valuesInSubmenuList.size();i++){
-              if((valuesInSubmenuList.get(i).getAttribute("id").equalsIgnoreCase("runa-send"))){
-                  valuesInSubmenuList.get(i).click();
-              }
-          }
+          valuesInSubmenuList.get(0).click();
 
       }
 

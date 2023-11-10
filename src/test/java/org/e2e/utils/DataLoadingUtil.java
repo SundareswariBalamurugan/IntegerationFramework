@@ -19,7 +19,6 @@ public class DataLoadingUtil extends PropertiesSetup {
         String config_Val = null;
         ConfigFileReader.getInstance().setConfig();
         config_Val = getConfig_props().getProperty(value).toString();
-        System.out.println("driver locator value is is " + config_Val);
         if (config_Val != null)
             return config_Val;
         else
@@ -31,9 +30,7 @@ public class DataLoadingUtil extends PropertiesSetup {
      */
     public String fetchLocatorValue(String element) {
         String locator_Val = null;
-        ConfigFileReader.getInstance().setConfig();
         locator_Val = getLocatorProps().getProperty(element).toString();
-        System.out.println("driver locator value is is " + locator_Val);
         if (locator_Val != null)
             return locator_Val;
         else

@@ -6,6 +6,5 @@ import org.e2e.utils.WebDriverUtil;
 
 public class BasePage {
     static final DataLoadingUtil dataLoadUtil = new DataLoadingUtil();
-     final WebDriverUtil driverUtil = new WebDriverUtil();
      final HelperUtil helperUtil = new HelperUtil();
 }
