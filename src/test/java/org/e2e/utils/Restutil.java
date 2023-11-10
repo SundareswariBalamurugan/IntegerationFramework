@@ -26,10 +26,10 @@ public class Restutil {
 
     }
 
-    public Response get(String param) {
-        RequestSpecification request = RestAssured.given().baseUri(dataLoadUtil.fetchConfigValue("employee_dummy_base_url"));
-        Response response = request.header("Content-Type", "application/json").when()
-                .get(param).then().assertThat()
+    public Response get() {
+        RequestSpecification request = RestAssured.given().baseUri(dataLoadUtil.fetchConfigValue("customer_base_url"));
+        Response response = request.when()
+                .get().then().assertThat()
                 .statusCode(HttpStatus.SC_OK).extract().response();
         return response;
     }

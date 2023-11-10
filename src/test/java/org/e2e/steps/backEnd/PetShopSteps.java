@@ -17,6 +17,7 @@ import org.e2e.domains.DogDetails;
 import org.e2e.utils.RestHelperUtil;
 import org.e2e.utils.Restutil;
 import org.junit.jupiter.api.Assertions;
+import org.e2e.constant.HeadersSetup;
 
 
 import java.util.List;
@@ -30,10 +31,9 @@ public class PetShopSteps {
     private final Restutil restutil;
     private final TestContext testContext;
 
-    private DogDetails dogDetailsRequest;
 
 
-    long idFromResponse;
+
 
 
     public PetShopSteps() {
@@ -46,7 +46,7 @@ public class PetShopSteps {
 
         String payload = CustomObjectMapper.getInstance().writeValueAsString(DogDetails.generate());
         testContext.setPayload(payload);
-        testContext.setHeaders(Headers.headers(new Header(HttpHeaders.CONTENT_TYPE, JSON.toString()), new Header(org.e2e.constant.Headers.API_KEY, "")));
+        testContext.setHeaders(Headers.headers(new Header(HttpHeaders.CONTENT_TYPE, JSON.toString()), new Header(HeadersSetup.API_KEY, "")));
         Response response = restutil.post(testContext);
         testContext.setResponse(response);
     }
@@ -70,7 +70,7 @@ public class PetShopSteps {
     public void a_get_request_is_sent_to_find_the_pets(String status) {
         String param = ("/pet/findByStatus?status=" + status);
         try {
-            Response response = restutil.get(param);
+            Response response = restutil.get();
             List<DogDetails> dogDetailsAvailable;
             dogDetailsAvailable = CustomObjectMapper.getInstance().readValue(response.getBody().asString(), new TypeReference<List<DogDetails>>() {
             });
@@ -84,7 +84,7 @@ public class PetShopSteps {
     public void a_get_request_is_sent_to() {
         String param = ("/pet/" + testContext.getPetId());
         try {
-            Response response = restutil.get(param);
+            Response response = restutil.get();
             DogDetails dogDetailsGetResponse = CustomObjectMapper.getInstance().readValue(response.getBody().asString(), DogDetails.class);
             RestHelperUtil.validateValueinResponse(dogDetailsGetResponse, testContext.getName());
         } catch (JsonProcessingException e) {
