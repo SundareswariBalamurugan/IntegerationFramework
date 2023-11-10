@@ -1,2 +1,2 @@
 # IntegerationFramework
-Integeration Framework of UI and API
+Integration Framework of UI and API
