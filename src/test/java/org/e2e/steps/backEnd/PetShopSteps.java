@@ -22,6 +22,7 @@ import org.e2e.constant.HeadersSetup;
 
 import java.util.List;
 
+import static com.google.common.net.HttpHeaders.*;
 import static io.restassured.http.ContentType.JSON;
 
 
@@ -31,7 +32,9 @@ public class PetShopSteps {
     private final Restutil restutil;
     private final TestContext testContext;
 
+     private static final Headers headers = new Headers(new Header(CONTENT_TYPE,JSON.toString()));
 
+     private static final String BASEURIPATH = "employee_dummy_base_url";
 
 
 
@@ -46,7 +49,7 @@ public class PetShopSteps {
 
         String payload = CustomObjectMapper.getInstance().writeValueAsString(DogDetails.generate());
         testContext.setPayload(payload);
-        testContext.setHeaders(Headers.headers(new Header(HttpHeaders.CONTENT_TYPE, JSON.toString()), new Header(HeadersSetup.API_KEY, "")));
+        testContext.setHeaders(Headers.headers(new Header(CONTENT_TYPE, JSON.toString()), new Header(HeadersSetup.API_KEY, "")));
         Response response = restutil.post(testContext);
         testContext.setResponse(response);
     }
@@ -69,8 +72,10 @@ public class PetShopSteps {
     @When("a GET request is sent to find the {string} pets")
     public void a_get_request_is_sent_to_find_the_pets(String status) {
         String param = ("/pet/findByStatus?status=" + status);
+
+
         try {
-            Response response = restutil.get();
+            Response response = restutil.get(BASEURIPATH,param, headers);
             List<DogDetails> dogDetailsAvailable;
             dogDetailsAvailable = CustomObjectMapper.getInstance().readValue(response.getBody().asString(), new TypeReference<List<DogDetails>>() {
             });
@@ -84,7 +89,7 @@ public class PetShopSteps {
     public void a_get_request_is_sent_to() {
         String param = ("/pet/" + testContext.getPetId());
         try {
-            Response response = restutil.get();
+            Response response = restutil.get(BASEURIPATH,param,headers);
             DogDetails dogDetailsGetResponse = CustomObjectMapper.getInstance().readValue(response.getBody().asString(), DogDetails.class);
             RestHelperUtil.validateValueinResponse(dogDetailsGetResponse, testContext.getName());
         } catch (JsonProcessingException e) {

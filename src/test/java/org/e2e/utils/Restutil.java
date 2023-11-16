@@ -1,12 +1,14 @@
 package org.e2e.utils;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.common.net.HttpHeaders;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.http.HttpStatus;
 import org.e2e.contexts.TestContext;
+import org.e2e.domains.DogDetails;
 import org.testng.Assert;
 
 
@@ -26,13 +28,39 @@ public class Restutil {
 
     }
 
-    public Response get() {
-        RequestSpecification request = RestAssured.given().baseUri(dataLoadUtil.fetchConfigValue("customer_base_url"));
+
+
+    public static Response get(String url, String param, Headers header) {
+        RequestSpecification request = RestAssured.given().baseUri(dataLoadUtil.fetchConfigValue(url));
+        Response response = request.headers(header).when()
+                .get(param).then().assertThat()
+                .statusCode(HttpStatus.SC_OK).extract().response();
+        return response;
+    }
+
+    public static Response get(String url, Headers header) {
+        RequestSpecification request = RestAssured.given().baseUri(dataLoadUtil.fetchConfigValue(url));
+        Response response = request.headers(header).when()
+                .get().then().assertThat()
+                .statusCode(HttpStatus.SC_OK).extract().response();
+        System.out.println("response" +response);
+        return response;
+    }
+
+    public static Response get(String url) {
+        RequestSpecification request = RestAssured.given().baseUri(dataLoadUtil.fetchConfigValue(url));
         Response response = request.when()
                 .get().then().assertThat()
                 .statusCode(HttpStatus.SC_OK).extract().response();
         return response;
     }
+
+    public static Response test(String url,TestContext testContext){
+        RequestSpecification request = RestAssured.given().baseUri(dataLoadUtil.fetchConfigValue(url));
+        Response response= request.headers(HttpHeaders.CONTENT_TYPE, JSON).get();
+        return response.then().statusCode(HttpStatus.SC_BAD_GATEWAY).extract().response();
+    }
+
 
     public Response put(TestContext testContext, String param) {
         Response response = RestAssured.given().baseUri(dataLoadUtil.fetchConfigValue("employee_dummy_base_url")).
