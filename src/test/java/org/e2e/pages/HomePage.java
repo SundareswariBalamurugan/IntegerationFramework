@@ -1,17 +1,19 @@
 package org.e2e.pages;
 
 
+import org.e2e.utils.DataLoadingUtil;
+import org.e2e.utils.HelperUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class HomePage extends BasePage {
+public class HomePage {
+
+        static final DataLoadingUtil dataLoadUtil = new DataLoadingUtil();
+        final HelperUtil helperUtil = new HelperUtil();
 
       final String URL_VAL =dataLoadUtil.fetchConfigValue("app_url");
-
-
-
 
       public  static final String ACCEPTCOOKIE= dataLoadUtil.fetchLocatorValue("acceptCookie");
       public static final String PRODUCTOPTIONINMENU = dataLoadUtil.fetchLocatorValue("menuOptions");

@@ -195,7 +195,7 @@ public class HelperUtil{
      */
 
     public void waitforFewSeconds() {
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     /**
@@ -374,4 +374,6 @@ public class HelperUtil{
             //exception handling
         }
     }
+
+
 }

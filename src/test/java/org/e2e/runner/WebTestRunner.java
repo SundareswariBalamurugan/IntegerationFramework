@@ -8,8 +8,8 @@ import org.testng.annotations.Test;
 
 
 @CucumberOptions(plugin = {"pretty", "html:../reports/", "json:reports/cucumber.json"},
-        features = {"src/test/resources/features"}, glue = {"runner", "glue", "org.e2e.hooks", "org.e2e.steps"},
-        tags = "@FetchDetail" )
+        features = {"src/test/resources/features/frontend"}, glue = {"runner", "glue", "steps"},
+        tags = "@homepage" )
 
 @Test(priority = 1)
 @Slf4j

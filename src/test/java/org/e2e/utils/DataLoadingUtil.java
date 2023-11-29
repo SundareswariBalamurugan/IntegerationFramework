@@ -31,6 +31,7 @@ public class DataLoadingUtil extends PropertiesSetup {
     public String fetchLocatorValue(String element) {
         String locator_Val = null;
         locator_Val = getLocatorProps().getProperty(element).toString();
+        System.out.println("locator value is" +locator_Val);
         if (locator_Val != null)
             return locator_Val;
         else

@@ -46,7 +46,10 @@ public class WebDriverUtil {
     public WebDriver launchChrome(){
        // System.setProperty("webdriver.chrome.driver",CHROME_PATH);
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+
+       ChromeOptions options = new ChromeOptions();
+       options.addArguments();
+         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         return driver;
     }
