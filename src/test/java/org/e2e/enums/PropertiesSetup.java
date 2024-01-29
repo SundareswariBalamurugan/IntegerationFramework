@@ -5,7 +5,7 @@ import java.util.Properties;
 public class PropertiesSetup {
 
     static Properties configProps;
-    static Properties locatorProps;
+
     public  Properties getConfig_props() {
         return configProps;
     }
@@ -14,11 +14,5 @@ public class PropertiesSetup {
         configProps = newConfigProps;
     }
 
-    public Properties getLocatorProps() {
-        return locatorProps;
-    }
 
-    public static void setLocatorProps(Properties newLocatorProps) {
-     locatorProps = newLocatorProps;
-    }
 }

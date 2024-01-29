@@ -4,11 +4,8 @@ package org.e2e.hooks;
 import io.cucumber.testng.TestNGCucumberRunner;
 import lombok.extern.slf4j.Slf4j;
 import org.e2e.dataproviders.ConfigFileReader;
-import org.e2e.utils.WebDriverUtil;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.BeforeMethod;
 
@@ -17,7 +14,7 @@ public class Hooks  {
 
     private TestNGCucumberRunner testNGCucumberRunner;
     private ConfigFileReader configFileReader;
-    static WebDriver driver;
+
 
 
 
@@ -34,10 +31,7 @@ public class Hooks  {
                 .getMethodName());
     }
 
-    @BeforeMethod(alwaysRun = true)
-    static void setupClass() {
-        driver=  WebDriverUtil.getDriver();
-    }
+
 
     /**
      * Create the Runner used for the automation framework.

@@ -25,15 +25,4 @@ public class DataLoadingUtil extends PropertiesSetup {
             throw new RuntimeException("values not specified in the Configuration.properties file for this element.");
     }
 
-    /**
-     * this method will fetch the locator values from Application.properties file
-     */
-    public String fetchLocatorValue(String element) {
-        String locator_Val = null;
-        locator_Val = getLocatorProps().getProperty(element).toString();
-        if (locator_Val != null)
-            return locator_Val;
-        else
-            throw new RuntimeException("values not specified in the Configuration.properties file for this element.");
-    }
 }

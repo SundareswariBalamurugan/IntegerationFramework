@@ -15,6 +15,7 @@ public class TestContext {
      Response response;
      String payload;
      String status;
+     int statusCode;
      long petId;
      String name;
 }
