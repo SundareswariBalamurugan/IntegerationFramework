@@ -46,7 +46,7 @@ public class RestHelperUtil extends Restutil {
     public static void validateValueinResponse(DogDetails dogDetailsAvailable, String name) {
 
         if (dogDetailsAvailable.getName().equalsIgnoreCase(name) ) {
-            System.out.println("Value of dog detail id is" + dogDetailsAvailable.getName() + " compared with" + name);
+            log.info("Value of dog detail id is" + dogDetailsAvailable.getName() + " compared with" + name);
             assertTrue(dogDetailsAvailable.getName().equalsIgnoreCase(name));
         }
     }
@@ -63,7 +63,7 @@ public class RestHelperUtil extends Restutil {
     public static Map<String,Object> getQueryparams(){
 
         Map<String,Object> queryParam = new HashMap<>();
-        System.out.println(" lat and log are " + QueryParamSetup.getLatVal() +QueryParamSetup.getLongVal() );
+        log.info(" lat and log are " + QueryParamSetup.getLatVal() +QueryParamSetup.getLongVal() );
         queryParam.put("lat", QueryParamSetup.getLatVal());
         queryParam.put("lon", QueryParamSetup.getLongVal());
         queryParam.put(("exclude"),excludeInQueryParam().stream().collect(Collectors.joining(",")));
@@ -114,7 +114,7 @@ public class RestHelperUtil extends Restutil {
             } else if (jsonObjectName.equalsIgnoreCase("Minutely")) {
                 size = root.getMinutely().size();
             }
-            System.out.println("Size of " + jsonObjectName + " is " + size);
+           log.info("Size of " + jsonObjectName + " is " + size);
             return size;
         }catch (NullPointerException e){
             throw e;
@@ -128,12 +128,12 @@ public class RestHelperUtil extends Restutil {
             if (jsonObjectName.equalsIgnoreCase("Weather")){
             for (Weather weather: root.getCurrent().getWeather()
             ) {
-                System.out.println(weather.getDescription());
+                log.info(weather.getDescription());
             }
             } else if (jsonObjectName.equalsIgnoreCase("Minutely")) {
                 for (Minutely minutely:root.getMinutely()
                 ) {
-                    System.out.println(minutely.getDt());
+                    log.info(minutely.getDt());
                 }
             }
 
@@ -156,7 +156,7 @@ public class RestHelperUtil extends Restutil {
             } else if (jsonObjectName.equalsIgnoreCase("Minutely")) {
                 value = root.getMinutely().get(jsonObjectindex).getDt();
             }
-            System.out.println("Specific value of " + jsonObjectName + " is " + value);
+            log.info("Specific value of " + jsonObjectName + " is " + value);
             return value;
         }catch (NullPointerException e){
             throw e;
