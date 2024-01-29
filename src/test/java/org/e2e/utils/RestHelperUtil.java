@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static org.e2e.steps.backEnd.WeatherForecastSteps.API_KEY;
+import static org.e2e.steps.WeatherForecastSteps.API_KEY;
 import static org.testng.Assert.assertTrue;
 
 
@@ -45,9 +45,9 @@ public class RestHelperUtil extends Restutil {
 
     public static void validateValueinResponse(DogDetails dogDetailsAvailable, String name) {
 
-        if (dogDetailsAvailable.getName() == name) {
+        if (dogDetailsAvailable.getName().equalsIgnoreCase(name) ) {
             System.out.println("Value of dog detail id is" + dogDetailsAvailable.getName() + " compared with" + name);
-            assertTrue(dogDetailsAvailable.getName() == name);
+            assertTrue(dogDetailsAvailable.getName().equalsIgnoreCase(name));
         }
     }
 

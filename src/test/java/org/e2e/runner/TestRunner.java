@@ -8,12 +8,12 @@ import org.testng.annotations.Test;
 
 
 @CucumberOptions(plugin = {"pretty", "html:../reports/", "json:reports/cucumber.json"},
-        features = {"src/test/resources/features/frontend"}, glue = {"runner", "glue", "steps"},
-        tags = "@homepage" )
+        features = {"src/test/resources/features/backend"}, glue = {"org.e2e.steps"},
+        tags = "@weather" )
 
 @Test(priority = 1)
 @Slf4j
-public class WebTestRunner extends CustomTestNGCucumberTests {
+public class TestRunner extends CustomTestNGCucumberTests {
 
     /**
      * Get the scenarios to run.

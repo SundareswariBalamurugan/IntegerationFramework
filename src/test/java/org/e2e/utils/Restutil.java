@@ -33,7 +33,8 @@ public class Restutil {
     public static Response get(String url, String param, Headers header) {
         RequestSpecification request = RestAssured.given().baseUri(dataLoadUtil.fetchConfigValue(url));
         Response response = request.headers(header).when()
-                .get(param).then().assertThat()
+                .get(param).then().
+                assertThat()
                 .statusCode(HttpStatus.SC_OK).extract().response();
         return response;
     }

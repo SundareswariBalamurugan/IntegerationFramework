@@ -1,4 +1,4 @@
-package org.e2e.steps.backEnd;
+package org.e2e.steps;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;

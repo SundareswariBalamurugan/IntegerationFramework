@@ -31,7 +31,7 @@ public class ConfigFileReader extends PropertiesSetup {
 
     public static void setConfig(){
         setConfigProps(readConfigFileValues(CONFIG_PROPS));
-        setLocatorProps(readConfigFileValues(LOCATOR_PROPS));
+
     }
 
     /**

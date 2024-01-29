@@ -1,4 +1,4 @@
-package org.e2e.steps.backEnd;
+package org.e2e.steps;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -24,6 +24,7 @@ import java.util.List;
 
 import static com.google.common.net.HttpHeaders.*;
 import static io.restassured.http.ContentType.JSON;
+import static org.apache.http.HttpHeaders.CONTENT_TYPE;
 
 
 @Slf4j
@@ -104,6 +105,7 @@ public class PetShopSteps {
         DogDetails dogDetails = CustomObjectMapper.getInstance().readValue(testContext.getPayload(), DogDetails.class);
         dogDetails.setStatus(status);
         dogDetails.setName(name);
+
         testContext.setPayload(CustomObjectMapper.getInstance().writeValueAsString(dogDetails));
         Response response = restutil.put(testContext, param);
         DogDetails dogDetailsPutResponse = CustomObjectMapper.getInstance().readValue((response.body().asString()),DogDetails.class);
