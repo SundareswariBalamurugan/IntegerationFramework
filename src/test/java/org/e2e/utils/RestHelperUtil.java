@@ -133,7 +133,7 @@ public class RestHelperUtil extends Restutil {
             } else if (jsonObjectName.equalsIgnoreCase("Minutely")) {
                 for (Minutely minutely:root.getMinutely()
                 ) {
-                    log.info(minutely.getDt());
+                    log.info(String.valueOf(minutely.getDt()));
                 }
             }
 
