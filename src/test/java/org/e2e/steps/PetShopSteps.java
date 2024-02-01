@@ -58,10 +58,10 @@ public class PetShopSteps {
 
     @Given("new POST response should be validated against the input")
     public void new_post_response_should_be_validated_against_the_input() throws JsonProcessingException {
-        System.out.println(" context is" + testContext.getResponse().getBody().prettyPrint());
+        log.info(" context is" + testContext.getResponse().getBody().prettyPrint());
         DogDetails dogDetailsRequest = CustomObjectMapper.getInstance().readValue(testContext.getPayload(), DogDetails.class);
         DogDetails dogDetailsResponse = CustomObjectMapper.getInstance().readValue(testContext.getResponse().getBody().asString(), DogDetails.class);
-        System.out.println("values to be compared is " + dogDetailsRequest.getId() + "-->" + dogDetailsResponse.getId());
+        log.info("values to be compared is " + dogDetailsRequest.getId() + "-->" + dogDetailsResponse.getId());
         Assertions.assertTrue(dogDetailsRequest.getId() == dogDetailsResponse.getId());
         testContext.setPetId(dogDetailsResponse.getId());
         testContext.setName(dogDetailsResponse.getName());

@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 @CucumberOptions(plugin = {"pretty", "html:../reports/", "json:reports/cucumber.json"},
         features = {"src/test/resources/features/backend"}, glue = {"org.e2e.steps"},
-        tags = "@weather" )
+        tags = " @ApiCheck" )
 
 @Test(priority = 1)
 @Slf4j
